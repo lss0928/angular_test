@@ -1,0 +1,16 @@
+
+<!--表单-->
+  <div ng-controller="listCtrl" class="animated {{aClass}}" style="background:blue;">
+    <p>这是list页面{{search}}</p>
+    <form name="postData" ng-submit="getData()">
+      用户名：<input type="text" name="username" ng-model="data.username" ng-minlength="6" ng-maxlength="20"required="">
+      <div ng-show="login.username.$error.minlength" >
+      	用户名不能少于6位
+      </div>
+      <div ng-show="login.username.$error.maxlength">
+      	用户名不能大于20位
+      </div>
+      密码：<input type="password" name="password" ng-model="data.password" required="">
+      <button ng-disabled="postData.$invalid">提交</button><!---必须用button->
+    </form>
+  </div>

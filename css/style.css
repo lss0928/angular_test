@@ -1,0 +1,32 @@
+
+	
+	
+	.product{
+		background: red;
+		height: 300px; 
+	}
+	.product .tit{
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+	}
+	.pro1{
+		background: orange;
+		height: 100px;
+		line-height: 25px;
+	}
+	.pro2{
+		background: yellow;
+		height: 200px;
+		line-height: 100px;
+	}
+	
+	.arrow{
+		display: inline-block;
+		 width:0;
+		 border-color: transparent red; 
+		 border-style: solid; 
+		 border-width: 8px 8px 8px 0;
+
+
+}

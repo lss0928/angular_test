@@ -1,0 +1,130 @@
+﻿<!doctype html>
+<!--定义入口文件名称-->
+<html lang="en" ng-app="myapp">
+<head>
+	<meta charset="utf-8">
+	<title page-title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<!--强制让页面宽度适应设备的宽，并且不允许用户缩放 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0 ,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/index.css">
+ 
+  <style>
+    .red{
+      color: red;
+    }
+    .rotatePage{
+      -webkit-animation-name:rotatePage;
+      -webkit-animation-duration:1s;
+      -webkit-animation-timing-function:linear;
+      -webkit-transform-origin:center center;
+    }
+    @-webkit-keyframes rotatePage{
+      from{
+        -webkit-transform:rotateY(0);
+      }
+      to{
+        -webkit-transform:rotateY(360deg);
+      }
+    }
+  </style>
+</head>
+<body ng-controller="aa" class="animated {{bClass}}">
+	<h1>这是aa页面</h1>
+	
+  <div id="wrap"> 
+    
+    <ul class="nav">
+      <!--设置地址栏参数-->
+      <li><b><a ui-sref="bb">bb</a></b></li>
+      <li><b><a ui-sref="list({'id':'21','price':'233万'})">list</a></b></li>
+      <li ng-click="toggleProduct()">
+        <b><a ui-sref="product({'id':'22','brand':'百度'})">product</a></b>       
+      </li>
+      <li><b><a ui-sref="filter">filter</a></b></li>
+      <li><b><a ui-sref="options">options</a></b></li>
+      <li ng-if="productShow">
+        <a ui-sref="product.pro1" ng-click="toggleThree()">二级pro1</a><br>
+        
+      </li>
+      <div><a ui-sref="product.pro1.pro1_1" ng-if="showThree">三级pro1_1</a></div>
+      <li ng-if="productShow"><a ui-sref="product.pro2">二级pro2</a></li>
+    </ul>
+  
+    <div class="right">
+      <div ui-view class="main"> </div>
+
+     <!--  <div id="box1"ng-controller="box1">
+         <h2>添加任务</h2>
+         <form action="">
+           <input type="text" ng-model="txt">
+           <button ng-click="btn()">提交</button>
+         </form>
+         <table >
+           <tr ng-repeat="i in task" >
+             <td><input type="checkbox" ng-click="finish($index)" ng-checked="i.bg"></td>
+             <td>任务{{$index}}:</td>
+             <td ng-class="{true:'red',false:''}[i.bg]">{{i.txt}}</td>
+           </tr> 
+          
+         </table>
+         <button ng-click="clean()">清除</button>
+     </div>
+     <hr>
+     <div id="box2" ng-controller="box2">
+       <h2>添加用户</h2>
+       <form>
+         <p>name: <input type="text" ng-model="name"></p>
+         <p>sex: <input type="text" ng-model="sex"></p>
+         <p>age: <input type="text" ng-model="age"></p>
+         <p>email: <input type="text" ng-model="email"></p>
+         <p><button ng-click="add()">添加</button></p>
+         <p><button ng-click="update(updateId)">修改</button></p>
+        
+       </form>
+       <table>
+         
+         <tr>
+          
+           <td>name</td>
+           <td>sex</td>
+           <td>age</td>
+           <td>email</td>
+           <td>操作</td>
+         </tr>
+         <tr ng-repeat="obj in arr" ng-click="edit()" ng-class="{true:'red',false:''}[obj._color]">         
+           <td>{{obj.name}}</td>
+           <td>{{obj.sex}}</td>
+           <td>{{obj.age}}</td>
+           <td>{{obj.email}}</td>
+           <td><button ng-click="del(obj.id)">删除</button></td>
+         </tr>
+       </table>
+     </div> -->
+     
+        
+     
+    </div>
+    
+    
+  </div>
+  <script src="js/jquery-1.11.1.js"></script>
+	<script src="js/angular.min.js"></script>
+	<!--路由文件-->
+  <script src="js/angular-ui-router.js"></script>
+  <!--通过在应用中引入 "angular-santize.js" 模块，使用 ngSanitize 函数来检测代码的安全性。-->
+	<script src="js/angular-sanitize.js"></script>
+	<!--懒加载-->
+	<script src="js/ocLazyLoad.js"></script>
+	<!--项目入口文件-->
+	<script src="js/app.js"></script>
+	<!--页面配置-->
+	<script src="js/config.js"></script>
+	<!--控制器和自定义指令-->
+	<script src="js/controller.js"></script>
+  <!--http请求-->
+  <script src="js/service.js"></script>
+
+</body>
+</html>

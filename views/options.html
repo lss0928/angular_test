@@ -1,0 +1,56 @@
+<div ng-controller="optionsCtrl">
+	<!--
+		ng-options属性可以在表达式中使用数组或对象来自动生成一个select中的option列表。
+		ng-options与ng-repeat很相似，很多时候可以用ng-repeat来代替ng-options。
+		但是ng-options提供了一些好处，例如减少内存提高速度，以及提供选择框的选项来让用户选择。
+		当select中一个选项被选择，该选项将会被绑定到ng-model。
+		如果你想设一个默认值，可以像这样：$scope.selected = $scope.collection[3]。
+
+之前一直在用ng-repeat就见到过track by，没有去了解它的用法，这次了解了一下。
+track by主要是防止值有重复，angularjs会报错。
+因为angularjs需要一个唯一值来与生成的dom绑定，以方便追踪数据。
+例如：items=[“a”,“a”,“b”],这样ng-repeat=“item in items”就会出错，而用ng-repeat=“(key,value) in items track by key”就不会出现错误了。
+    -->
+	<h2>track by防止重复值报错</h2>
+	<p>遍历colors</p>
+	<ul>
+		<li ng-repeat="v in colors">
+			<label>name:<input ng-model="v.name"></label>
+			<label>disabled?:<input type="checkbox" ng-model="v.notAnOption"></label>
+			<!--点击直接splice删除数组项-->
+			<button ng-click="colors.splice($index,1)" aria-label="Remove">×</button>
+		</li>
+		<li>
+			<!--点击追加数组项-->
+			<button ng-click="colors.push({})">add</button>
+		</li>
+
+	</ul>
+    <h2>ng-options的使用方法</h2>
+	<!--使用ng-model="myColor" $scope.myColor = $scope.colors[2];绑定数据为默认选中项-->
+	<span>1</span>
+	<select ng-model="myColor" ng-options="val.name for val in colors"></select>
+	<hr>
+	<span>2</span>
+	<select ng-model="myColor" ng-options="val.name for val in colors">
+		<option value="">--请选择--</option>
+	</select>
+	<hr>
+	<!--分组group by使用方法-->
+	<span>3</span>
+	<select ng-model="myColor" ng-options="v.name group by v.shade for v in colors"></select>
+	<hr>
+	<!--disable when 布尔值 的使用方法-->
+	<span>4</span>
+	<select ng-model="myColor" ng-options="v.name group by v.shade disable when v.notAnOption for v in colors"></select>
+	<hr>
+	<!--点击后 重新给myColor赋值-->
+	Select:<button ng-click="myColor = {name:'not in list',shade:'other'}">
+		bogus 伪造
+	</button>
+	<span>myColor:{{ myColor }}</span>
+	<hr>
+	<h2>ng-style的用法</h2>
+	<!--ng-style的用法 ng-style={'属性名1':'属性值1','属性名2':'属性值2'}-->
+	<div style="height:50px;border:1px solid #000;" ng-style="{'color':myColor.name,'background':'orange','text-align':'center','line-height':'50px'}">ng-style的用法:ng-style={'属性名1':'属性值1','属性名2':'属性值2'}</div>
+</div>

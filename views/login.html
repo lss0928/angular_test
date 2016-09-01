@@ -1,0 +1,62 @@
+<div ng-controller="loginCtrl">
+	<form ng-submit="login()">
+		<table>
+			<tr>
+				<td>用户名：</td>
+				<td><input type="text" ng-model="postData.username" placeholder="请输入"></td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td><input type="password" ng-model="postData.password" placeholder="请输入"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="登录" ></td>
+			</tr>
+		</table>
+    </form>
+    <div ng-bind-html="myHtml"></div>
+    <div ng-bind-template="{{myTemplate1}} {{myTemplate2}}"></div>
+    <div>
+	   	<h3>ng-switch tab切换</h3>
+	   	<ol>
+	   		 <li ng-style="{'float':'left','margin':'0 10px','border':'1px solid #000'}" ng-repeat="i in tabMenu" ng-click="clickTab()">{{i}}</li>
+	   	</ol>
+	   	<ul ng-switch="tabSelect" ng-style="{'clear':'both','border':'1px solid #000','width':'300px','height':'200px'}">
+	   		<li ng-switch-default="tab1">content1</li>
+	   		<li ng-switch-when="tab2">content2</li>
+	   		<li ng-switch-when="tab3">content3</li>
+	   		<li ng-switch-when="tab4">content4</li>
+	   	</ul>
+    </div>
+
+    <select ng-model="myVar">
+	  <option value="runoob">www.runoob.com
+	  <option value="google">www.google.com
+	  <option value="taobao">www.taobao.com
+	</select>
+	<hr>
+	<div ng-switch="myVar">
+	  <div ng-switch-when="runoob">
+	     <h1>菜鸟教程</h1>
+	     <p>欢迎访问菜鸟教程</p>
+	  </div>
+	  <div ng-switch-when="google">
+	     <h1>Google</h1>
+	     <p>欢迎访问Google</p>
+	  </div>
+	  <div ng-switch-when="taobao">
+	     <h1>淘宝</h1>
+	     <p>欢迎访问淘宝</p>
+	  </div>
+	  <div ng-switch-default>
+	     <h1>切换</h1>
+	     <p>选择不同选项显示对应的值。</p>
+	  </div>
+
+	 <h3> ng-value</h3>
+	 <input ng-value="123">
+	 <select ng-value="456"></select>
+	
+</div>
+</div>

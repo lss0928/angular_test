@@ -1,0 +1,46 @@
+<div ng-controller="filterCtrl" class="animated {{aClass}}" style="background:blue;">
+	<!-- filter 过滤器 -->
+	<!--转换大小写-->
+	<p>{{"dsadas"|uppercase}}</p>
+	<p>{{"ABCDEFG"|lowercase}}</p>
+
+	<!--转换数字-->
+	<p>{{"434"|number}}</p>
+
+	<!--转换货币-->
+	<p>{{12 | currency}}</p>
+
+	<!--转换时间-->
+	<p>{{1469082598652 | date:"yyyy-MM-dd HH:mm:ss"}}</p><!-- 2016-07-21 14:29:58 -->
+	<p>{{1469082598652 | date:"yyyy-MM-dd hh:mm:ss"}}</p><!-- 2016-07-21 02:29:58 -->
+	<p>{{1469082598652 | date:"yyyy-MM-dd h:mma"}}</p><!-- 2016-07-21 2:29PM -->
+
+
+	<!--将字符串格式的json转换为json数据,区别：[ 与 {  之间的间距变大-->
+	<p>{{[{name:"张三",age:25},{name:"张四",age:24}] | json}}</p>
+
+	<!--循环-->
+	<ul ng-init="arr=[7,2,8,4,5,6]">
+		<li ng-repeat="m in arr">{{m}}</li>
+	</ul>
+
+	<!--筛选出指定的条件的数据-->
+	<ol ng-init='info=[{name:"张三",age:25},{name:"张四",age:24}]'>
+
+		<li ng-repeat="i in info | filter:{age:24}">{{i}}</li>
+	</ol>
+	<!--筛选出n条数据-->
+	<ol ng-init='info=[ {name:"张三1",age:251},
+						{name:"张四1",age:241},
+						{name:"张三2",age:25},
+						{name:"张四2",age:24}
+					]'>
+		<li ng-repeat="i in info | limitTo:3 ">{{i}}</li>
+	</ol> 
+
+	<!-- 数组去重 -->
+	<div >
+		{{ [1,1,2,2,2,3,3,3,7,6,4,5,4,4] | unique}}
+	</div>
+
+</div>

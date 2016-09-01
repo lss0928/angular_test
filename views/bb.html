@@ -1,0 +1,38 @@
+
+  <div ng-controller="index1" class="animated {{aClass}}" ng-init="msg=888" style="background:blue;">
+  <h4>欢迎光临{{username}}</h4>
+    <input type="text" ng-model="data">
+    <!--{{data}}与ng-bind="data"两者效果一样-->
+    <span>{{data}}</span>
+    <span ng-bind="data"></span>
+    <p>{{msg*1000}}</p>
+    <p>从子级获取的数据：{{childData}}</p>
+    <ul>
+      <li ng-repeat="i in json" ng-if="i.flag">
+        姓名：{{i.name}}
+        <span ng-show="i.flag">江苏</span>
+
+      </li>
+    </ul>
+    <div ng-controller="child1">
+      <p>{{json}}</p>
+      <button ng-click="sub()">点击传播数据</button>
+    </div>
+    <div ng-controller="child2">
+      点击按钮从父级获取数据：{{child}}
+    </div>
+    <!--自定义指令-->
+    <ol create-dom>
+      
+    </ol>
+  </div>
+  <div ng-controller="sibling" ng-click="toggle()">
+    <button>click me</button>
+    <p ng-show="show"> show</p>
+  </div>
+
+
+  
+
+ 
+  
